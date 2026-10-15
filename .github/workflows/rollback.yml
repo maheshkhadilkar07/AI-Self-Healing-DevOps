@@ -1,0 +1,18 @@
+# Template: GitOps rollback triggered by the self-healing engine (gh workflow run rollback.yml -f service=api)
+name: rollback
+on:
+  workflow_dispatch:
+    inputs:
+      service: { description: "service to roll back", required: true }
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    permissions: { contents: write }
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 2 }
+      - name: Revert last release commit (ArgoCD then syncs the cluster to the reverted state)
+        run: |
+          git config user.name "self-healing-bot"; git config user.email "bot@example.com"
+          git revert --no-edit HEAD
+          git push

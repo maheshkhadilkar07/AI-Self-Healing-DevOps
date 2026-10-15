@@ -1,0 +1,8 @@
+flask>=3.0
+scikit-learn>=1.4
+numpy>=1.26
+requests>=2.31
+# optional: only if you want a real LLM to write the root-cause explanation
+# anthropic>=0.40
+# optional: mirror the event router to a real Kafka broker (set KAFKA_BOOTSTRAP=host:9092)
+# kafka-python>=2.0

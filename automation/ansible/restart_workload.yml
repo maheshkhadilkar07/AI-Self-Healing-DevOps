@@ -1,0 +1,10 @@
+# Invoked by the Ansible Automation Controller for: container crash, memory exhaustion, database failure
+- name: Restart a Kubernetes workload safely
+  hosts: localhost
+  gather_facts: false
+  vars: { service: demo-app, namespace: default }
+  tasks:
+    - name: Rolling restart
+      ansible.builtin.command: kubectl rollout restart deployment/{{ service }} -n {{ namespace }}
+    - name: Wait until rollout is healthy
+      ansible.builtin.command: kubectl rollout status deployment/{{ service }} -n {{ namespace }} --timeout=120s

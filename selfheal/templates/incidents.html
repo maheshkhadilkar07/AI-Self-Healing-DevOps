@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_incidents"><h1>Incidents</h1><p class="sub">Every incident is saved to <code>data/history.db</code> and survives restarts. Click a row for the full investigation.</p>
+ <div class="card"><div class="row noprint"><input id="inc_q" placeholder="Search id, service, failure, action, log text..." style="min-width:280px"><select id="inc_status"><option value="">All statuses</option><option>resolved</option><option>verifying</option><option>pending_approval</option><option>escalated</option><option>closed_by_human</option></select>
+ <select id="inc_type"><option value="">All failure types</option><option>container_crash</option><option>memory_exhaustion</option><option>cpu_overload</option><option>bad_deployment</option><option>database_failure</option></select><span class="sp"></span>
+ <a href="/api/export/incidents.csv"><button class="s">Export CSV</button></a> <a href="/api/export/incidents.json"><button class="s">Export JSON</button></a></div>
+ <table><thead><tr><th>ID</th><th>Time</th><th>Root cause</th><th>Failure</th><th>Conf.</th><th>Action</th><th>Status</th><th>Attempts</th><th>MTTD</th><th>MTTR</th></tr></thead><tbody id="inc_tbl"></tbody></table><div class="k" id="inc_n"></div></div>
+</section>
+{% endblock %}

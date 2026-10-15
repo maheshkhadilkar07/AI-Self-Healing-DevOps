@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_logs"><h1>Logs, Events &amp; Traces</h1><p class="sub">Observability data. Logs and events are stored in the history DB (INFO logs are not stored).</p>
+ <div class="card"><div class="row"><span class="tab on" data-k="log">Logs</span><span class="tab" data-k="event">K8s events</span><span class="tab" data-k="trace">Traces (live)</span><select id="lg_svc"></select><select id="lg_lvl"><option value="">any level</option><option>ERROR</option><option>WARN</option><option>Warning</option><option>Normal</option></select><input id="lg_q" placeholder="search text"><label class="k"><input type="checkbox" id="lg_auto" checked> auto-refresh</label></div>
+ <div class="lg" id="lg_out"></div></div>
+</section>
+{% endblock %}

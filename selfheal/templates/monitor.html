@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_monitor"><h1>Live Monitor</h1><p class="sub">Real-time metrics collected by the Observability layer. Red dots = Isolation Forest anomalies. Hover the chart for exact values.</p>
+ <div class="card"><div class="row"><select id="mm_metric"><option value="latency">Latency (ms, log scale)</option><option value="error_rate">Error rate (%)</option><option value="cpu">CPU (%)</option><option value="mem">Memory (%)</option><option value="rps">Throughput</option><option value="score">Anomaly score (&lt;0 = anomaly)</option></select>
+ <select id="mm_win"><option value="60">last 60 s</option><option value="120" selected>last 120 s</option><option value="300">last 300 s</option></select><span id="mm_svcs" class="row" style="margin:0"></span><span class="sp"></span><button class="s" id="mm_freeze">Freeze chart</button></div>
+ <canvas id="mm_chart" style="height:300px"></canvas><div class="k" id="mm_legend" style="margin-top:6px"></div></div>
+ <div class="card"><h3>Current values</h3><table><thead><tr><th>Service</th><th>CPU %</th><th>Mem %</th><th>Latency ms</th><th>Errors %</th><th>Throughput</th><th>Anomaly score</th><th>Pods / version</th></tr></thead><tbody id="mm_tbl"></tbody></table></div>
+</section>
+{% endblock %}

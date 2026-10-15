@@ -1,0 +1,30 @@
+{% extends "base.html" %}{% block content %}
+<section class="page on" id="p_home">
+<div class="hero"><div class="k">Department of Computer Science and Engineering &middot; Semester VII (2026-2027)</div>
+<h1 style="font-size:34px;margin:6px 0">AI Self-Healing DevOps</h1>
+<p style="font-size:16px;max-width:760px">An AI-powered system that continuously monitors cloud applications, detects anomalies, finds the root cause, performs <b>safe automatic recovery</b>, verifies the result and learns from every incident &mdash; cutting downtime and MTTR with minimal human intervention.</p>
+<div class="row"><a href="/overview"><button class="p">Open live dashboard</button></a><a href="/chaos"><button class="r">Break something (Chaos Lab)</button></a><a href="/project"><button>Read the project</button></a></div>
+<div id="home_live" class="row k"></div></div>
+<div class="card"><h3>System flow &mdash; Monitor &rarr; Detect &rarr; Decide &rarr; Heal &rarr; Verify &rarr; Learn</h3>
+<div class="grid g6 flow">
+<a href="/monitor"><b>1 Monitor</b><span>Unified observability: metrics, logs, traces, events</span></a>
+<a href="/ai"><b>2 Detect</b><span>Isolation Forest finds abnormal behaviour</span></a>
+<a href="/ai"><b>3 Diagnose</b><span>Dependency graph + Random Forest + RAG retrieval</span></a>
+<a href="/policy"><b>4 Decide</b><span>Policy &amp; risk engine, human approval for high risk</span></a>
+<a href="/architecture"><b>5 Heal</b><span>Ansible / GitHub Actions / ArgoCD remediation plan</span></a>
+<a href="/incidents"><b>6 Verify &amp; Learn</b><span>Health check, retry or escalate, update knowledge base</span></a></div></div>
+<h3>Explore</h3>
+<div class="grid g4 flow">
+<a href="/overview"><b>Overview</b><span>KPIs, service health, active incident</span></a>
+<a href="/monitor"><b>Live Monitor</b><span>Interactive multi-service charts</span></a>
+<a href="/architecture"><b>Architecture</b><span>Live block diagram, dependency graph, event router</span></a>
+<a href="/incidents"><b>Incidents</b><span>Searchable stored history with full investigations</span></a>
+<a href="/chaos"><b>Chaos Lab</b><span>Inject failures and run scenarios</span></a>
+<a href="/ai"><b>AI Lab</b><span>Model internals and a what-if analyzer</span></a>
+<a href="/policy"><b>Policy &amp; Approvals</b><span>Risk rules, approvals, learned success rates</span></a>
+<a href="/logs"><b>Logs &amp; Events</b><span>Stored logs, Kubernetes events, traces</span></a>
+<a href="/audit"><b>Audit Trail</b><span>Every AI decision and action</span></a>
+<a href="/reports"><b>Reports</b><span>MTTR, availability, breakdowns, PDF/CSV</span></a>
+<a href="/literature"><b>Literature Survey</b><span>10 papers and the research gap</span></a>
+<a href="/methodology"><b>Methodology</b><span>The six algorithms and where they live in code</span></a></div>
+</section>{% endblock %}

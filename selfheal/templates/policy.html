@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_policy"><h1>Policy &amp; Approvals</h1><p class="sub">Every AI-proposed action is validated here before execution. High-risk and low-success actions need a human.</p>
+ <div id="pol_pending"></div>
+ <div class="grid g2"><div class="card"><h3>Remediation playbook &amp; risk</h3><table><thead><tr><th>Failure</th><th>Action</th><th>Risk</th></tr></thead><tbody id="pol_rules"></tbody></table></div>
+ <div class="card"><h3>Learned success rates (feedback loop)</h3><div id="pol_stats" class="k">No outcomes yet.</div><h3 style="margin-top:14px">Guard rails</h3><div id="pol_limits"></div></div></div>
+</section>
+{% endblock %}

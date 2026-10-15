@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_settings"><h1>Settings</h1><p class="sub">Control the engine and your data.</p>
+ <div class="card">
+ <div class="sw"><input type="checkbox" id="st_auto"><div><b>Auto-approve high-risk actions</b><div class="k">Off = a human must approve e.g. a database restart.</div></div></div>
+ <div class="sw"><input type="checkbox" id="st_pause"><div><b>Pause engine</b><div class="k">Freeze monitoring (useful while explaining a screen).</div></div></div>
+ <div class="sw"><input type="range" id="st_speed" min="0.2" max="3" step="0.1" style="width:160px"><div><b>Tick speed: <span id="st_speed_v"></span> s</b><div class="k">Seconds between monitoring cycles (simulation mode). Slower = easier to narrate.</div></div></div>
+ <div class="sw"><select id="st_theme"><option value="auto">Auto</option><option value="light">Light</option><option value="dark">Dark</option></select><div><b>Theme</b></div></div>
+ <div class="sw"><button class="r" id="st_clear">Clear stored history</button><div class="k">Deletes incidents, metrics and logs from the database (audit file and knowledge base are kept).</div></div></div>
+ <div class="card"><h3>About this run</h3><div id="st_info" class="k"></div></div>
+</section>
+{% endblock %}

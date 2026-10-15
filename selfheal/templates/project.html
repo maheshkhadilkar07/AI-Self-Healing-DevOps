@@ -1,0 +1,19 @@
+{% extends "base.html" %}{% block content %}
+<section class="page on" id="p_project"><h1>Project</h1><p class="sub">AI Self Healing DevOps &mdash; Lokmanya Tilak Jankalyan Shikshan Sanstha's Priyadarshini College of Engineering, Nagpur (Autonomous, affiliated to R.T.M. Nagpur University)</p>
+<div class="grid g2"><div class="card"><h3>Abstract</h3>
+<p><b>Problem.</b> Manual detection and recovery of cloud application failures leads to high downtime and MTTR.</p>
+<p><b>Solution.</b> An AI-powered self-healing DevOps system that continuously monitors applications, detects anomalies, identifies root causes, and automatically performs safe recovery actions to minimise downtime and MTTR.</p>
+<p><b>Architecture.</b> A 5-layer stack: MERN application, Docker/Kubernetes, AI-based anomaly detection and RCA, automated remediation with policy validation, and health verification with continuous learning.</p>
+<p><b>Security.</b> RBAC, secure API communication, secrets management, container security, AI action validation, audit logging, and human approval for high-risk remediation.</p>
+<p><b>Outcome.</b> Reduced downtime and MTTR, faster failure detection and recovery, minimised human intervention, improved reliability, and safer automated DevOps operations.</p></div>
+<div class="card"><h3>Introduction</h3><p><b>Problem statement.</b> Manual detection, diagnosis and recovery of cloud application failures lead to increased downtime, high MTTR and dependency on DevOps engineers.</p>
+<p><b>Proposed solution.</b> An AI-powered self-healing DevOps system that automatically detects anomalies, identifies root causes, performs safe remediation and verifies recovery with minimal human intervention.</p>
+<h3 style="margin-top:14px">Key features</h3><ul>
+<li><b>AI-based anomaly detection</b> &mdash; unusual behaviour from real-time metrics and logs (<a href="/ai">AI Lab</a>)</li>
+<li><b>Automated root cause analysis</b> &mdash; telemetry and historical incidents (<a href="/architecture">dependency graph</a>)</li>
+<li><b>Self-healing and safe remediation</b> &mdash; restart, scaling, rollback (<a href="/policy">policy</a>)</li>
+<li><b>Recovery verification and learning</b> &mdash; health checks, knowledge base (<a href="/incidents">incidents</a>)</li></ul></div></div>
+<div class="grid g2"><div class="card"><h3>Objectives</h3><ul><li>Reduce downtime and Mean Time To Recovery (MTTR)</li><li>Detect failures faster than manual monitoring</li><li>Minimise human intervention for routine failures</li><li>Keep automation safe through policy checks, verification and human approval</li><li>Learn from every incident to improve future responses</li></ul></div>
+<div class="card"><h3>Team</h3><table><tbody><tr><td>Shreya Prasad</td><td>117</td></tr><tr><td>Atharva Lutade</td><td>131</td></tr><tr><td>Swati Chaudhary</td><td>221</td></tr><tr><td>Krunal Vighre</td><td>241</td></tr><tr><td>Mahesh Khadilkar</td><td>242</td></tr></tbody></table><p><b>Guided by:</b> Mrs. Rajshri Pote</p></div></div>
+<div class="card"><h3>Conclusion</h3><p>AI-powered self-healing DevOps enables automated detection, diagnosis and recovery from cloud application failures. Integrating AI/ML, observability, root cause analysis and automated remediation reduces manual intervention and downtime. Policy-based security and recovery verification ensure that automated actions are safe and effective. The framework can improve reliability, availability and MTTR while providing a foundation for autonomous DevOps operations.</p></div>
+</section>{% endblock %}

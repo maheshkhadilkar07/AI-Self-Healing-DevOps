@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_audit"><h1>Audit Trail</h1><p class="sub">Every diagnosis, policy decision, dispatch and human approval (data/audit_log.jsonl).</p>
+ <div class="card"><div class="row"><input id="au_q" placeholder="search"><select id="au_ev"><option value="">all events</option><option>diagnosis</option><option>policy</option><option>dispatch</option><option>action</option><option>human_approval</option><option>resolved</option><option>escalated</option><option>closed_by_human</option><option>policy_update</option></select></div>
+ <table><thead><tr><th>Time</th><th>Event</th><th>Details</th></tr></thead><tbody id="au_tbl"></tbody></table></div>
+</section>
+{% endblock %}

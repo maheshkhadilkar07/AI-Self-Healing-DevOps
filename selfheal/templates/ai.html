@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_ai"><h1>AI Lab</h1><p class="sub">Look inside the models: Isolation Forest, Random Forest, similarity retrieval. Try the what-if analyzer.</p>
+ <div class="grid g2"><div class="card"><h3>Isolation Forest &mdash; anomaly score (below 0 = anomalous)</h3><div class="row"><select id="ai_svc"></select></div><canvas id="ai_chart" style="height:220px"></canvas><div id="ai_base" class="k" style="margin-top:8px"></div></div>
+ <div class="card"><h3>Random Forest &mdash; live classification of selected service</h3><div id="ai_cls"></div><h3 style="margin-top:14px">Feature importance</h3><div id="ai_imp"></div></div></div>
+ <div class="grid g2"><div class="card"><h3>What-if analyzer &mdash; drag sliders to see how the AI reacts</h3>
+  <div class="row"><select id="wi_svc"></select><button class="s" id="wi_load">Load current metrics</button></div>
+  <div id="wi_sliders"></div><div id="wi_out" style="margin-top:10px"></div></div>
+ <div class="card"><h3>Incident knowledge base (TF-IDF + cosine similarity)</h3><div class="row"><input id="kb_q" placeholder="symptoms e.g. cpu_saturated latency_high" style="flex:1"></div><div id="kb_out" style="max-height:420px;overflow:auto"></div></div></div>
+</section>
+{% endblock %}

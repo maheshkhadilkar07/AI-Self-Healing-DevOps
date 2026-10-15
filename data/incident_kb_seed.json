@@ -1,0 +1,10 @@
+[
+ {"id":"INC-001","failure_type":"container_crash","service":"api","symptoms":"service_api cpu_zero memory_zero errors_total traffic_dead latency_extreme","root_cause":"Pod OOMKilled / process exited","action":"restart","outcome":"resolved"},
+ {"id":"INC-002","failure_type":"memory_exhaustion","service":"api","symptoms":"service_api memory_saturated latency_high errors_elevated traffic_dropped","root_cause":"Memory leak in request handler","action":"restart","outcome":"resolved"},
+ {"id":"INC-003","failure_type":"cpu_overload","service":"api","symptoms":"service_api cpu_saturated latency_high traffic_dropped","root_cause":"Traffic spike exceeded single replica capacity","action":"scale","outcome":"resolved"},
+ {"id":"INC-004","failure_type":"bad_deployment","service":"frontend","symptoms":"service_frontend errors_elevated latency_high","root_cause":"Faulty release introduced 5xx errors","action":"rollback","outcome":"resolved"},
+ {"id":"INC-005","failure_type":"database_failure","service":"database","symptoms":"service_database cpu_saturated latency_extreme errors_elevated traffic_dropped","root_cause":"Database connection pool exhaustion","action":"restart","outcome":"resolved"},
+ {"id":"INC-006","failure_type":"cpu_overload","service":"auth","symptoms":"service_auth cpu_saturated latency_high","root_cause":"Login burst after campaign","action":"scale","outcome":"resolved"},
+ {"id":"INC-007","failure_type":"bad_deployment","service":"api","symptoms":"service_api errors_elevated latency_high cpu_normal","root_cause":"Config regression in new image tag","action":"rollback","outcome":"resolved"},
+ {"id":"INC-008","failure_type":"container_crash","service":"auth","symptoms":"service_auth cpu_zero memory_zero errors_total traffic_dead","root_cause":"CrashLoopBackOff after bad secret","action":"restart","outcome":"resolved"}
+]

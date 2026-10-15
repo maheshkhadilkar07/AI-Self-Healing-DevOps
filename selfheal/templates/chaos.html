@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_chaos"><h1>Chaos Lab</h1><p class="sub">Inject failures the AI cannot see, then watch it detect, diagnose and heal them.</p>
+ <div class="card"><h3>Scenarios (one click)</h3><div class="grid g4" id="cl_scen"></div></div>
+ <div class="card"><h3>Custom failure</h3><div class="row"><select id="cl_service"></select><select id="cl_fault"></select><label class="k"><input type="checkbox" id="cl_stub"> stubborn (fix won't work &rarr; escalation)</label><button class="r" id="cl_go">Inject failure</button><button id="cl_reset">Reset everything</button></div><div id="cl_msg" class="k"></div>
+ <div class="k" style="margin-top:8px"><b>Ground truth (hidden from AI):</b> <span id="cl_truth">none</span></div></div>
+</section>
+{% endblock %}

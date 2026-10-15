@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_overview">
+ <div class="grid g6" id="kpis"></div><div style="height:14px"></div>
+ <div id="ov_banner"></div>
+ <div class="card"><h3>Service health &mdash; click a card for details</h3><div class="svcs" id="ov_svcs"></div></div>
+ <div class="grid g2"><div class="card"><h3>Active incident timeline</h3><div id="ov_tl" class="k">No active incident.</div></div>
+ <div class="card"><h3>Recent incidents (stored in history DB)</h3><table><thead><tr><th>ID</th><th>Root</th><th>Failure</th><th>Status</th><th>MTTR</th></tr></thead><tbody id="ov_recent"></tbody></table></div></div>
+</section>
+{% endblock %}

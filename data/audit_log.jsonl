@@ -1,0 +1,79 @@
+{"ts": "2026-10-15 18:27:55", "event": "engine_ready", "services": ["frontend", "api", "auth", "database"], "samples": 60}
+{"ts": "2026-10-15 18:27:55", "event": "diagnosis", "id": "EVT-001", "root": "api", "failure": "container_crash", "confidence": 1.0, "action": "restart"}
+{"ts": "2026-10-15 18:27:55", "event": "policy", "id": "EVT-001", "decision": "approved", "risk": "low", "reasons": ["action 'restart' is in allowlist and matches playbook", "risk level: low"]}
+{"ts": "2026-10-15 18:27:55", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/restart_workload.yml", "command": "ansible-playbook automation/ansible/restart_workload.yml -e service=api", "dry_run": true}
+{"ts": "2026-10-15 18:27:55", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:27:55", "event": "action", "id": "EVT-001", "action": "restart", "service": "api", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/restart_workload.yml -e service=api  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl rollout restart deployment/api]", "attempt": 1}
+{"ts": "2026-10-15 18:27:56", "event": "resolved", "id": "EVT-001", "mttr": 8.0}
+{"ts": "2026-10-15 18:27:56", "event": "diagnosis", "id": "EVT-002", "root": "auth", "failure": "memory_exhaustion", "confidence": 1.0, "action": "restart"}
+{"ts": "2026-10-15 18:27:56", "event": "policy", "id": "EVT-002", "decision": "approved", "risk": "low", "reasons": ["action 'restart' is in allowlist and matches playbook", "risk level: low"]}
+{"ts": "2026-10-15 18:27:56", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/restart_workload.yml", "command": "ansible-playbook automation/ansible/restart_workload.yml -e service=auth", "dry_run": true}
+{"ts": "2026-10-15 18:27:56", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:27:56", "event": "action", "id": "EVT-002", "action": "restart", "service": "auth", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/restart_workload.yml -e service=auth  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl rollout restart deployment/auth]", "attempt": 1}
+{"ts": "2026-10-15 18:27:56", "event": "resolved", "id": "EVT-002", "mttr": 7.0}
+{"ts": "2026-10-15 18:27:57", "event": "diagnosis", "id": "EVT-003", "root": "api", "failure": "cpu_overload", "confidence": 0.96, "action": "scale"}
+{"ts": "2026-10-15 18:27:57", "event": "policy", "id": "EVT-003", "decision": "approved", "risk": "low", "reasons": ["action 'scale' is in allowlist and matches playbook", "risk level: low"]}
+{"ts": "2026-10-15 18:27:57", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/scale_workload.yml", "command": "ansible-playbook automation/ansible/scale_workload.yml -e service=api -e replicas=+1", "dry_run": true}
+{"ts": "2026-10-15 18:27:57", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:27:57", "event": "action", "id": "EVT-003", "action": "scale", "service": "api", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/scale_workload.yml -e service=api -e replicas=+1  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl scale deployment/api --replicas=2]", "attempt": 1}
+{"ts": "2026-10-15 18:27:57", "event": "resolved", "id": "EVT-003", "mttr": 7.0}
+{"ts": "2026-10-15 18:27:58", "event": "diagnosis", "id": "EVT-004", "root": "frontend", "failure": "bad_deployment", "confidence": 1.0, "action": "rollback"}
+{"ts": "2026-10-15 18:27:58", "event": "policy", "id": "EVT-004", "decision": "approved", "risk": "medium", "reasons": ["action 'rollback' is in allowlist and matches playbook", "risk level: medium"]}
+{"ts": "2026-10-15 18:27:58", "event": "dispatch", "tool": "GitHub Actions", "artifact": ".github/workflows/rollback.yml", "command": "gh workflow run rollback.yml -f service=frontend   # git revert last release", "dry_run": true}
+{"ts": "2026-10-15 18:27:58", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:27:58", "event": "action", "id": "EVT-004", "action": "rollback", "service": "frontend", "detail": "GitHub Actions -> gh workflow run rollback.yml -f service=frontend   # git revert last release  |  then ArgoCD (GitOps reconciliation)  [effect: argocd app rollback frontend (GitOps revert to v1.9)]", "attempt": 1}
+{"ts": "2026-10-15 18:27:58", "event": "resolved", "id": "EVT-004", "mttr": 8.0}
+{"ts": "2026-10-15 18:27:58", "event": "diagnosis", "id": "EVT-005", "root": "database", "failure": "database_failure", "confidence": 1.0, "action": "restart"}
+{"ts": "2026-10-15 18:27:58", "event": "policy", "id": "EVT-005", "decision": "needs_approval", "risk": "high", "reasons": ["action 'restart' is in allowlist and matches playbook", "risk level: high", "high risk -> human approval required"]}
+{"ts": "2026-10-15 18:27:58", "event": "human_approval", "id": "EVT-005", "decision": "approved"}
+{"ts": "2026-10-15 18:27:58", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/restart_workload.yml", "command": "ansible-playbook automation/ansible/restart_workload.yml -e service=database", "dry_run": true}
+{"ts": "2026-10-15 18:27:58", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:27:58", "event": "action", "id": "EVT-005", "action": "restart", "service": "database", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/restart_workload.yml -e service=database  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl rollout restart deployment/database]", "attempt": 1}
+{"ts": "2026-10-15 18:27:59", "event": "resolved", "id": "EVT-005", "mttr": 8.0}
+{"ts": "2026-10-15 18:27:59", "event": "diagnosis", "id": "EVT-006", "root": "api", "failure": "container_crash", "confidence": 1.0, "action": "restart"}
+{"ts": "2026-10-15 18:27:59", "event": "policy", "id": "EVT-006", "decision": "approved", "risk": "low", "reasons": ["action 'restart' is in allowlist and matches playbook", "risk level: low"]}
+{"ts": "2026-10-15 18:27:59", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/restart_workload.yml", "command": "ansible-playbook automation/ansible/restart_workload.yml -e service=api", "dry_run": true}
+{"ts": "2026-10-15 18:27:59", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:27:59", "event": "action", "id": "EVT-006", "action": "restart", "service": "api", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/restart_workload.yml -e service=api  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl rollout restart deployment/api]", "attempt": 1}
+{"ts": "2026-10-15 18:28:00", "event": "policy", "id": "EVT-006", "decision": "approved", "risk": "low", "reasons": ["action 'restart' is in allowlist and matches playbook", "risk level: low"]}
+{"ts": "2026-10-15 18:28:00", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/restart_workload.yml", "command": "ansible-playbook automation/ansible/restart_workload.yml -e service=api", "dry_run": true}
+{"ts": "2026-10-15 18:28:00", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:28:00", "event": "action", "id": "EVT-006", "action": "restart", "service": "api", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/restart_workload.yml -e service=api  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl rollout restart deployment/api]", "attempt": 2}
+{"ts": "2026-10-15 18:28:00", "event": "escalated", "id": "EVT-006", "reasons": ["recovery verification failed"]}
+{"ts": "2026-10-15 18:28:00", "event": "policy_update", "rule": "container_crash->restart", "success": "1/2"}
+{"ts": "2026-10-15 18:28:00", "event": "closed_by_human", "id": "EVT-006"}
+{"ts": "2026-10-15 18:30:13", "event": "engine_ready", "services": ["frontend", "api", "auth", "database"], "samples": 60}
+{"ts": "2026-10-15 18:31:41", "event": "engine_ready", "services": ["frontend", "api", "auth", "database"], "samples": 60}
+{"ts": "2026-10-15 18:38:39", "event": "engine_ready", "services": ["frontend", "api", "auth", "database"], "samples": 60}
+{"ts": "2026-10-15 18:42:52", "event": "diagnosis", "id": "EVT-001", "root": "database", "failure": "memory_exhaustion", "confidence": 1.0, "action": "restart"}
+{"ts": "2026-10-15 18:42:52", "event": "policy", "id": "EVT-001", "decision": "needs_approval", "risk": "high", "reasons": ["action 'restart' is in allowlist and matches playbook", "risk level: high", "high risk -> human approval required"]}
+{"ts": "2026-10-15 18:43:13", "event": "human_approval", "id": "EVT-001", "decision": "approved"}
+{"ts": "2026-10-15 18:43:13", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/restart_workload.yml", "command": "ansible-playbook automation/ansible/restart_workload.yml -e service=database", "dry_run": true}
+{"ts": "2026-10-15 18:43:13", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:43:13", "event": "action", "id": "EVT-001", "action": "restart", "service": "database", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/restart_workload.yml -e service=database  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl rollout restart deployment/database]", "attempt": 1}
+{"ts": "2026-10-15 18:43:18", "event": "resolved", "id": "EVT-001", "mttr": 20.0}
+{"ts": "2026-10-15 18:43:56", "event": "diagnosis", "id": "EVT-002", "root": "frontend", "failure": "bad_deployment", "confidence": 1.0, "action": "rollback"}
+{"ts": "2026-10-15 18:43:56", "event": "policy", "id": "EVT-002", "decision": "approved", "risk": "medium", "reasons": ["action 'rollback' is in allowlist and matches playbook", "risk level: medium"]}
+{"ts": "2026-10-15 18:43:56", "event": "dispatch", "tool": "GitHub Actions", "artifact": ".github/workflows/rollback.yml", "command": "gh workflow run rollback.yml -f service=frontend   # git revert last release", "dry_run": true}
+{"ts": "2026-10-15 18:43:56", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:43:56", "event": "action", "id": "EVT-002", "action": "rollback", "service": "frontend", "detail": "GitHub Actions -> gh workflow run rollback.yml -f service=frontend   # git revert last release  |  then ArgoCD (GitOps reconciliation)  [effect: argocd app rollback frontend (GitOps revert to v1.9)]", "attempt": 1}
+{"ts": "2026-10-15 18:44:02", "event": "resolved", "id": "EVT-002", "mttr": 8.0}
+{"ts": "2026-10-15 18:44:40", "event": "diagnosis", "id": "EVT-003", "root": "api", "failure": "cpu_overload", "confidence": 0.97, "action": "scale"}
+{"ts": "2026-10-15 18:44:40", "event": "policy", "id": "EVT-003", "decision": "approved", "risk": "low", "reasons": ["action 'scale' is in allowlist and matches playbook", "risk level: low"]}
+{"ts": "2026-10-15 18:44:40", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/scale_workload.yml", "command": "ansible-playbook automation/ansible/scale_workload.yml -e service=api -e replicas=+1", "dry_run": true}
+{"ts": "2026-10-15 18:44:40", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:44:40", "event": "action", "id": "EVT-003", "action": "scale", "service": "api", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/scale_workload.yml -e service=api -e replicas=+1  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl scale deployment/api --replicas=2]", "attempt": 1}
+{"ts": "2026-10-15 18:44:47", "event": "resolved", "id": "EVT-003", "mttr": 7.0}
+{"ts": "2026-10-15 18:45:10", "event": "diagnosis", "id": "EVT-004", "root": "api", "failure": "container_crash", "confidence": 1.0, "action": "restart"}
+{"ts": "2026-10-15 18:45:10", "event": "policy", "id": "EVT-004", "decision": "approved", "risk": "low", "reasons": ["action 'restart' is in allowlist and matches playbook", "risk level: low"]}
+{"ts": "2026-10-15 18:45:10", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/restart_workload.yml", "command": "ansible-playbook automation/ansible/restart_workload.yml -e service=api", "dry_run": true}
+{"ts": "2026-10-15 18:45:10", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:45:10", "event": "action", "id": "EVT-004", "action": "restart", "service": "api", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/restart_workload.yml -e service=api  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl rollout restart deployment/api]", "attempt": 1}
+{"ts": "2026-10-15 18:45:19", "event": "resolved", "id": "EVT-004", "mttr": 8.0}
+{"ts": "2026-10-15 18:45:31", "event": "diagnosis", "id": "EVT-005", "root": "database", "failure": "database_failure", "confidence": 1.0, "action": "restart"}
+{"ts": "2026-10-15 18:45:31", "event": "policy", "id": "EVT-005", "decision": "needs_approval", "risk": "high", "reasons": ["action 'restart' is in allowlist and matches playbook", "risk level: high", "high risk -> human approval required"]}
+{"ts": "2026-10-15 18:45:42", "event": "human_approval", "id": "EVT-005", "decision": "approved"}
+{"ts": "2026-10-15 18:45:42", "event": "dispatch", "tool": "Ansible Automation Controller", "artifact": "automation/ansible/restart_workload.yml", "command": "ansible-playbook automation/ansible/restart_workload.yml -e service=database", "dry_run": true}
+{"ts": "2026-10-15 18:45:42", "event": "dispatch", "tool": "ArgoCD (GitOps reconciliation)", "artifact": "deploy/k8s/argocd-app.yaml", "command": "argocd app sync demo-app   # make live state match Git", "dry_run": true}
+{"ts": "2026-10-15 18:45:42", "event": "action", "id": "EVT-005", "action": "restart", "service": "database", "detail": "Ansible Automation Controller -> ansible-playbook automation/ansible/restart_workload.yml -e service=database  |  then ArgoCD (GitOps reconciliation)  [effect: kubectl rollout restart deployment/database]", "attempt": 1}
+{"ts": "2026-10-15 18:45:51", "event": "resolved", "id": "EVT-005", "mttr": 12.0}

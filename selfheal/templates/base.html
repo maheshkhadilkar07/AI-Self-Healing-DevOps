@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ title }} &middot; AI Self-Healing DevOps</title><link rel="stylesheet" href="/static/style.css"></head>
+<body data-page="{{ page }}">
+<div class="app">
+<aside><h2>AI Self-Healing DevOps<small>Priyadarshini College of Engineering<br>CSE &middot; Semester VII</small></h2>
+<nav>{% for grp, items in nav %}<div class="navgrp">{{ grp }}</div>
+{% for slug, label, href in items %}<a href="{{ href }}" class="{{ 'on' if slug == page }}">{{ label }}{% if slug == 'policy' %}<span class="badge" id="nb" hidden>0</span>{% endif %}</a>
+{% endfor %}{% endfor %}</nav></aside>
+<div class="main">
+<header class="top"><div><b>{{ title }}</b> <span class="k" id="tMeta"></span></div>
+<div class="row" style="margin:0"><span class="pill" id="tPill"><i class="dot"></i><span id="tPillT">connecting...</span></span>
+<button class="s" id="tPause">Pause</button></div></header>
+{% block content %}{% endblock %}
+</div></div>
+<div id="drawer"></div><div id="toasts"></div>
+<script src="/static/app.js"></script></body></html>

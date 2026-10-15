@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page on" id="p_reports"><h1>Reports</h1><p class="sub">Aggregated from the stored history. Use Print to save this page as a PDF.</p>
+ <div class="row noprint"><button class="p" onclick="window.print()">Print / Save as PDF</button><a href="/api/export/incidents.csv"><button>Export CSV</button></a></div>
+ <div class="grid g4" id="rp_kpis"></div><div style="height:14px"></div>
+ <div class="grid g2"><div class="card"><h3>MTTR per incident vs manual baseline (assumed 15 min)</h3><canvas id="rp_mttr" style="height:230px"></canvas></div>
+ <div class="card"><h3>Incidents by failure type</h3><div id="rp_types"></div><h3 style="margin-top:14px">By remediation action</h3><div id="rp_actions"></div></div></div>
+ <div class="card"><h3>All incidents</h3><table><thead><tr><th>ID</th><th>Failure</th><th>Action</th><th>Status</th><th>Attempts</th><th>MTTD</th><th>MTTR</th></tr></thead><tbody id="rp_tbl"></tbody></table></div>
+</section>
+{% endblock %}

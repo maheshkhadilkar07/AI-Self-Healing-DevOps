@@ -1,0 +1,8 @@
+# Invoked by the Ansible Automation Controller for: cpu overload / high load
+- name: Scale out a Kubernetes workload (bounded by policy MAX_REPLICAS)
+  hosts: localhost
+  gather_facts: false
+  vars: { service: demo-app, namespace: default, replicas: 3 }
+  tasks:
+    - name: Scale deployment
+      ansible.builtin.command: kubectl scale deployment/{{ service }} --replicas={{ replicas }} -n {{ namespace }}
